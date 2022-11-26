@@ -1,2 +1,32 @@
 Data:
- data_raw: C:\Users\amreez khan\winequality\data\winequality-red (1).csv
+ data_raw: C:\Users\amreez khan\winequality\winequality-red (1).csv
+
+base:
+    project_name: wine_data_prediction_using_MLOPS
+    target_col: quality
+    independent_cols: [fixed-acidity,volatile-acidity,citric-acid,residual-sugar,chlorides,free-sulfur-dioxide,total-sulfur-dioxide,density,pH,sulphates,alcohol]
+    data-shape-col: 12
+    data-shape-row: 1599
+    random-state: 42
+
+
+# splitting of data
+split_data:
+  train_path: data/processed/train_winequaltiy.csv
+  test_path: data/processed/test_winequaltiy.csv
+  test_size: 0.25
+
+#training my data
+estimators:
+  ElasticNet:
+    params:
+      alpha: 0.88
+      l1_ratio: 0.78
+
+#save my model in format of joblib or pickle
+model_dir_save_pkl: saved_models
+
+#reports of my data like score or loss etc...
+reports:
+  params: reports/params.json
+  scores: reports/scores.json
